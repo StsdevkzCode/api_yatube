@@ -159,7 +159,6 @@ class TestCommentAPI:
             'установлен свойство "Только для чтения"'
         )
 
-
     def test_comments_id_available(self, user_client, post, comment_1_post):
         response = user_client.get(
             f'/api/v1/posts/{post.id}/comments/{comment_1_post.id}/'
@@ -317,7 +316,7 @@ class TestCommentAPI:
             'комментарий.'
         )
 
-    @pytest.mark.django_db(transaction=True)
+    @pytest.mark.django_db(transaction=True) # type: ignore
     def test_comment_delete_by_author(self, user_client,
                                       post, comment_2_post):
         response = user_client.delete(
